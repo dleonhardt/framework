@@ -1,18 +1,25 @@
 <?php
-function __autoload($className) {
-	$extensions = array(".php", ".class.php", ".inc");
-	$paths = explode(PATH_SEPARATOR, get_include_path());
-	$className = str_replace("_", DIRECTORY_SEPARATOR, $className);
+
+// Nullify any existing autoloads
+spl_autoload_register(null, false);
+
+// Specify extensions that may be loaded
+spl_autoload_extensions('.php, .class.php');
+
+// Class loader function
+function autoload($className) {
+	$className = ltrim($className, '\\');
+	$fileName  = '';
+	$namespace = '';
+	if($lastNsPos = strrpos($className, '\\')) {
+		$namespace = substr($className, 0, $lastNsPos);
+		$className = substr($className, $lastNsPos + 1);
+		$fileName  = strtolower(str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR);
+	}
+	$fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php'; 
 	
-	foreach($paths as $path):
-		$filename = $path . DIRECTORY_SEPARATOR . $className;
-		
-		foreach ($extensions as $ext):
-			if(is_readable($filename . $ext)):
-				require_once $filename . $ext;
-				
-				break;
-			endif;
-		endforeach;
-	endforeach;
+	require $fileName;
 }
+
+// Register the loader function
+spl_autoload_register('autoload');

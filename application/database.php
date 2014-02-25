@@ -1,5 +1,9 @@
 <?php
 
+namespace Application;
+
+use PDO;
+
 class Database {
 	
   private static $conn = NULL;
@@ -12,7 +16,7 @@ class Database {
 	
   public function __construct() {
 		try {
-			$this->db = new PDO("mysql:host=".self::DB_HOST.";dbname=".self::DB_NAME, self::DB_USER, self::DB_PASSWORD);
+			$this->db = new PDO("mysql:host=".self::DB_HOST.";dbname=".self::DB_NAME, self::DB_USER, self::DB_PASS);
 			$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch(PDOException $e) {
 			echo $e->getMessage();

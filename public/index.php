@@ -1,11 +1,18 @@
 <?php
 
+// Config
+require_once __DIR__.'/../application/config.php';
+
+// Autoloader
 require_once __DIR__.'/../application/autoload.php';
 
-/*$app = new Application();
+use Application\Classes\Test;
 
-$app->get('/hello', function() {
-    return 'Hello!';
-});
+$app = new Test;
 
-$app->run();*/
+/*try {
+	Router::route(new Request);
+} catch(Exception $e) {
+	$controller = new errorController;
+	$controller->error($e->getMessage());
+}*/
