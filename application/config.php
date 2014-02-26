@@ -3,6 +3,7 @@
 // Application Environment
 define('ENVIRONMENT', 'development');
 
+// Display errors if the application environment is in development
 if(defined('ENVIRONMENT')):
 	switch(ENVIRONMENT):
 		case 'development':
