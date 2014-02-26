@@ -1,5 +1,8 @@
 <?php
 
+// Set the include path to the root directory
+set_include_path(realpath(dirname(__FILE__).'/../'));
+
 // Nullify any existing autoloads
 spl_autoload_register(null, false);
 

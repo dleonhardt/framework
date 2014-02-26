@@ -1,10 +1,5 @@
 <?php
 
-// Path to the root of the framework
-define('BASE_PATH', realpath(dirname(__FILE__).'/../'));
-	
-set_include_path(BASE_PATH);
-
 // Application Environment
 define('ENVIRONMENT', 'development');
 

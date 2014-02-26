@@ -17,7 +17,7 @@ class Test {
 		
 		var_dump($test_query);
 		
-		$test_result = $test_query->fetchAll();		
+		$test_result = $test_query->fetchAll();
 		
 		print_r($test_result);
 	}
