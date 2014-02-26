@@ -2,6 +2,8 @@
 
 require_once __DIR__.'/../application/start.php';
 
-use Application\Classes\Test;
+use Application\Classes\Example;
 
-$test = new Test;
+$example = new Example;
+
+print_r($example->testDatabase());
