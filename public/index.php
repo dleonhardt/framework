@@ -7,7 +7,8 @@ use Application\Classes\UserExample;
 $user_example = new UserExample;
 
 if($_SERVER['REQUEST_METHOD'] == "POST"):
-	$user_data = array("username" => $_POST['username'], "password" => $_POST['password']);
+	// Create a New User
+	$user_data = array("username" => $_POST['create-username'], "password" => $_POST['create-password']);
 	
 	$user_example->createUser($user_data);
 endif;
@@ -39,36 +40,36 @@ $users = $user_example->getUsers();
       <input type="text" class="form-control" name="username">
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
+      <label>Password</label>
       <input type="password" class="form-control" name="password">
     </div>
     <button type="submit" class="btn btn-default">Create User</button>
+		<?php if(isset($users) && !empty($users)): ?>
+    <hr />
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if(isset($users) && is_array($users)): ?>
+          <?php foreach($users as $user): ?>
+          <tr>
+            <td><?php echo $user['id']; ?></td>
+            <td><?php echo $user['username']; ?></td>
+            <td><?php echo $user['password']; ?></td>
+          </tr>
+          <?php endforeach; ?>
+          <?php endif; ?>
+        </tbody>
+      </table>
+    </div>
+    <?php endif; ?>
   </form>
-  <?php if(isset($users) && !empty($users)): ?>
-  <hr />
-  <div class="table-responsive">
-    <table class="table">
-    	<thead>
-      	<tr>
-        	<th>ID</th>
-          <th>Username</th>
-          <th>Password</th>
-        </tr>
-      </thead>
-      <tbody>
-      	<?php if(isset($users) && is_array($users)): ?>
-				<?php foreach($users as $user): ?>
-      	<tr>
-        	<td><?php echo $user['id']; ?></td>
-        	<td><?php echo $user['username']; ?></td>
-        	<td><?php echo $user['password']; ?></td>
-        </tr>
-				<?php endforeach; ?>
-        <?php endif; ?>
-      </tbody>
-    </table>
-  </div>
-  <?php endif; ?>
 </div>
 </body>
 </html>

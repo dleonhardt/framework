@@ -16,8 +16,12 @@ class UserExample {
 		$this->db->insert('users', $user_data);
 	}
 	
-	public function editUser($user_data) {
+	public function updateUser($user_data) {
 		$this->db->update('users', $user_data);
+	}
+	
+	public function deleteUser($user_data) {
+		$this->db->delete('users', $user_data);
 	}
 	
 	public function getUserById($id) {
