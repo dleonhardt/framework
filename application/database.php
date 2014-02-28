@@ -29,12 +29,40 @@ class Database {
 	
   public static function getConnection() {
 		if(self::$conn == NULL)
-			self::$conn = new Database();
+			self::$conn = new Database;
 		
     return self::$conn;
   }
 	
 	public function query($sql) {
 		return $this->db->query($sql);
+	}
+	
+	public function prepare($sql) {
+		return $this->db->prepare($sql);
+	}
+	
+	public function insert($table, $data) {
+		if(isset($data) && is_array($data)):
+			$fields = implode(", ", array_keys($data));
+			$values = str_repeat("?, ", count($data) - 1)." ?";
+			
+			$stmt = $this->db->prepare("INSERT INTO ".$table." (".$fields.") VALUES (".$values.")");
+			$stmt->execute(array_values($data));
+		endif;
+	}
+	
+	public function update($table, $data) {
+		if(isset($data) && is_array($data)):
+			
+		endif;
+	}
+	
+	public function __clone() {
+		return false;
+	}
+	
+	public function __wakeup() {
+		return false;
 	}
 }
