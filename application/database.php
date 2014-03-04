@@ -42,35 +42,6 @@ class Database {
 		return $this->db->prepare($sql);
 	}
 	
-	public function insert($table, $data) {
-		if(isset($data) && is_array($data)):
-			$fields = implode(", ", array_keys($data));
-			$values = str_repeat("?, ", count($data) - 1)." ?";
-			
-			$stmt = $this->db->prepare("INSERT INTO ".$table." (".$fields.") VALUES (".$values.")");
-			$stmt->execute(array_values($data));
-		endif;
-	}
-	
-	public function update($table, $data) {
-		if(isset($data) && isset($data['id']) && is_array($data)):
-			$id = $data['id'];
-			unset($data['id']);
-						
-			$fields = implode(" = ?, ", array_keys($data));
-				
-			$stmt = $this->db->prepare("UPDATE ".$table." SET ".$fields." = ? WHERE id = ".$id);
-			$stmt->execute(array_values($data));
-		endif;
-	}
-	
-	public function delete($table, $data) {
-		if(isset($data) && isset($data['id']) && !empty($data['id'])):
-			$stmt = $this->db->prepare("DELETE FROM ".$table." WHERE id = ?");
-			$stmt->execute(array_values($data));
-		endif;
-	}
-	
 	public function __clone() {
 		return false;
 	}

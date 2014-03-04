@@ -8,7 +8,7 @@ $user_example = new UserExample;
 
 if($_SERVER['REQUEST_METHOD'] == "POST"):
 	// Create a New User
-	$user_data = array("username" => $_POST['create-username'], "password" => $_POST['create-password']);
+	$user_data = array("username" => $_POST['username'], "password" => $_POST['password']);
 	
 	$user_example->createUser($user_data);
 endif;
