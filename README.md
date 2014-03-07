@@ -24,7 +24,7 @@ framework/
 │   └── start.php
 └── public/
     ├── .htaccess
-    └── index.php
+    └── example.php
 ```
 
 ## Getting started
@@ -45,13 +45,13 @@ For more information on [Classes](#classes), see the section below.
 
 ### Classes
 
-In the `/application/classes/` directory you will find a Class example file named `UserExample.php`. All Classes will need to go in this same directory. You may also remove the `UserExample.php` file if you do not need it for a reference when you're making your own Classes. If you would like to start a Class from scratch, you will need to do the following steps.
+In the `/application/classes/` directory you will find a class example file named `UserExample.php`. All classes will need to go in this same directory. You may also remove the `UserExample.php` file if you do not need it for a reference when you're making your own classes. If you would like to start a class from scratch, you will need to do the following steps.
 
 First, add the following namespace to the top of the page:
 
 `namespace Application\Classes;`
 
-After that, you will need to define the Class.
+After that, you will need to define the class.
 
 ```
 class **ClassNameGoesHere** {
@@ -59,7 +59,7 @@ class **ClassNameGoesHere** {
 }
 ```
 
-Inside the Class's body you create functions to be used within your pages. For more information on this, please see the `UserExample.php' file.
+Inside the class's body you create functions to be used within your pages. For more information on this, please see the `UserExample.php` file.
 
 Finally, you will need to add a `use` statement and create a new instance of that object on the page in which you'd like to use the Class on.
 
@@ -67,22 +67,13 @@ This is explained further in the [Getting started](#getting-started) section.
 
 ### Database setup
 
-If you'd like to use a database in your application, you will need to do some minor configuration first. As of right now the only database environment that is supported is MySQL. To configure a MySQL database, you will need to go to the `/application` directory and open the file `database.php`. Then, edit the following fields:
+If you'd like to use a database in your application, you will need to do some minor configuration first. As of right now the only database environment that is supported is MySQL. To configure a MySQL database, you will need to go to the `/application` directory and open the `database.php` file. Then, edit the following fields:
 
 ```
-namespace Application;
-
-use PDO;
-
-class Database {
-	
-  private static $conn = NULL;
-	private $db;
-	
-	const DB_HOST = '**localhost**';
-	const DB_NAME = '**test**';
-	const DB_USER = '**root**';
-	const DB_PASS = '**root**';
+const DB_HOST = '**DatabaseHostGoesHere**';
+const DB_NAME = '**DatabaseNameGoesHere**';
+const DB_USER = '**DatabaseUsernameGoesHere**';
+const DB_PASS = '**DatabasePasswordGoesHere**';
 ```
 
 Next, you will need to include `use Application\Database;` below the namespace in the class that you will be using to interact with the database.
@@ -97,7 +88,7 @@ public function __construct() {
 }
 ```
 
-For more information, see the `/application/classes/UserExample.php` as an example to see how it is used.
+For more information, see the `/application/classes/UserExample.php` as an example of how it is used.
 
 ## Author
 

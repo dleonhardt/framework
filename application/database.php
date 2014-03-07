@@ -10,9 +10,9 @@ class Database {
 	private $db;
 	
 	const DB_HOST = 'localhost';
-	const DB_NAME = 'test';
-	const DB_USER = 'root';
-	const DB_PASS = 'root';
+	const DB_NAME = '';
+	const DB_USER = '';
+	const DB_PASS = '';
 	
   public function __construct() {
 		try {
